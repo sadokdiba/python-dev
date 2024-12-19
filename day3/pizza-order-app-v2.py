@@ -72,9 +72,9 @@ def main():
         print("GOODBYE!")
         quit()
 
-    price_at_size, price_at_pepperoni = peperoni_check(size, price_at_size)
-    final_bill = cheese_check(price_at_size, price_at_pepperoni)
-    display_final_bill(final_bill)
+    price_at_size, price_at_pepperoni = peperoni_check(size, price_at_size) #calls the function peperoni_check and passing size and price_at_size arguments / receive the price_at_pepperoni updated value back from peperoni_check
+    final_bill = cheese_check(price_at_size, price_at_pepperoni) #calls the function cheese_check and passing price_at_size and price_at_pepperoni / receive back the final_bill value from the cheese_check function
+    display_final_bill(final_bill) #calls the function display bill and passes the argument final_bill
 
-if __name__ == "__main__":
+##if __name__ == "__main__": commenting this out as it is necessary only when the file is being called externally
     main()
