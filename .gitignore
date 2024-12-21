@@ -1,3 +1,4 @@
 /manuals/
 .env
 /.idea/
+.DS_Store
