@@ -29,27 +29,29 @@ def ascii_art():
 
 
 def shipwreck():
+    type_text("You are shipwrecked on the beach of Mystic Island\nWould you like to go \"North\" or \"South\"")
     max_attempts = 3
-    while max_attempts > 0:
-        type_text("You are shipwrecked on the beach of Mystic Island\nWould you like to go \"North\" or \"South\"")
+    while True:
         shipwreck_decision = input().strip().upper()
         if shipwreck_decision == "NORTH":
             type_text("That was close! You find a dense Jungle!\n")
             north()
         elif shipwreck_decision == "SOUTH":
-            type_text("You are caught in quicksand. Game Over")
-            quit()
+            type_text("You are caught in quicksand")
+            game_over()
+        elif max_attempts == 0:
+            break
         else:
+            type_text(f"Incorrect input. Enter either \"North\" or \"South\" - {max_attempts} attempts left.")
             max_attempts -= 1
-            if max_attempts == 0:
-                type_text("You have exhausted your attempts.")
-                game_over()
-            type_text(f"Incorrect input. Enter either \"Tree\" or or \"Foot\" - {max_attempts} attempts left.")
-    
+            continue
+    type_text("You have exhausted your attempts.")
+    game_over()
+
 def north():
+    type_text("Now at the Jungle, Climb a tree \"Tree\"? or continue on foot? \"Foot\"")
     max_attempts = 3
-    while max_attempts > 0:
-        type_text("Now at the Jungle, Climb a tree \"Tree\"? or continue on foot? \"Foot\"")
+    while True:
         north_decision = input().strip().upper()
         if north_decision == "TREE":
             type_text("Almost there! You spot a path leading to a cave!\n")
@@ -57,16 +59,18 @@ def north():
         elif north_decision == "FOOT":
             type_text("You are bitten by a snake.")
             game_over()
+        elif max_attempts == 0:
+            break
         else:
-            max_attempts -= 1
-            if max_attempts == 0:
-                type_text("You have exhausted your attempts.")
-                game_over()
             type_text(f"Incorrect input. Enter either \"Tree\" or or \"Foot\" - {max_attempts} attempts left.")
+            max_attempts -= 1
+            continue
+    type_text("You have exhausted your attempts.")
+    game_over()
 
 def climb_a_tree():
     max_attempts = 3
-    while max_attempts > 0:
+    while True:
         type_text("Would your like to Enter the cave \"Cave\"? or walk along the river? \"River\"")
         climb_a_tree_decision = input().strip().upper()
         if climb_a_tree_decision == "CAVE":
@@ -75,16 +79,18 @@ def climb_a_tree():
         elif climb_a_tree_decision == "RIVER":
             type_text("You are swept away by the current.")
             game_over()
-        else:
-            max_attempts -= 1
-            if max_attempts == 0:
-                type_text("You have exhausted your attempts.")
-                game_over()
+        elif max_attempts == 0:
+            break
+        else:   
             type_text(f"Incorrect input. Enter either \"Tree\" or or \"Foot\" - {max_attempts} attempts left.")
+            max_attempts -= 1
+            continue
+    type_text("You have exhausted your attempts.")
+    game_over()
 
 def sleeping_dragon():
     max_attempts = 3
-    while max_attempts > 0:
+    while True:
         type_text("Now in front of the Dragon! Steal the Crystal \"Steal\"? or befriend the dragon? \"Befriend\"")
         sleeping_dragon_decision = input().strip().upper()
         if sleeping_dragon_decision == "BEFRIEND":
@@ -93,12 +99,14 @@ def sleeping_dragon():
         elif sleeping_dragon_decision == "STEAL":
             type_text("The dragon wakes up and burns you!!!!\n")
             game_over()
-        else:
-            max_attempts -= 1
-            if max_attempts == 0:
-                type_text("You have exhausted your attempts.")
-                game_over()
+        elif max_attempts == 0:
+            break
+        else:            
             type_text(f"Incorrect input. Enter either \"Tree\" or or \"Foot\" - {max_attempts} attempts left.")
+            max_attempts -= 1
+            continue
+    type_text("You have exhausted your attempts.")
+    game_over()
 
 def game_over():
     '''Game over function'''
@@ -121,10 +129,10 @@ def main():
         time.sleep(1)
         shipwreck()
     except KeyboardInterrupt:
-        type_text("\nYou have exited the game.")
+        type_text("\nYou have exited the app with ctrl+c command. Good bye!")
         quit()
     except Exception as e:
-        type_text(f"An error occurred: {e}")
+        type_text(f"\nAn error occurred: {e}")
         quit()
     
 if __name__ == "__main__":
