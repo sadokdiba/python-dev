@@ -39,4 +39,6 @@ def process_number(number_entered):
         else:
             print(number)
     quit()
-main()
+    
+if __name__ == "__main__":
+    main()

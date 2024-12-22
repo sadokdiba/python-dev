@@ -70,25 +70,33 @@ game_over = False
 correct_letters = []
 lives = 6
 
-print(logo) # prints the hangman logo
+print(f"{logo}\n\n") # prints the hangman logo
+print(f"The word to find has {word_length} letters as such {placeholder} <--- Hidden here")
 
 while not game_over:
     print(f"****************************{lives}/6 LIVES LEFT****************************")
-    guess = input("Guess a letter: \n\n").lower()
+    try:
+        guess = input("Guess a letter: \n\n").lower()
+    except KeyboardInterrupt:
+        print("You have exited the game")
+        quit()
+    except ValueError as e:
+        print(f"An error occured: {e}")
+        quit()
 
     if guess in correct_letters:
         print(f"You've already guessed the letter \"{guess}\" ")
 
     display = ""
-    
+
     for letter in chosen_word:
         if letter == guess:
-            display += letter
-            correct_letters.append(guess)
+            display+=guess
+            correct_letters.append(letter)
         elif letter in correct_letters:
-            display += letter
+            display+=guess
         else:
-            display += "_"
+            display+="_"
 
     if guess not in chosen_word:
         lives -= 1
@@ -96,7 +104,7 @@ while not game_over:
         if lives == 0:
             game_over = True
 
-            print("***************************YOU LOOSE*****************************")
+            print(f"***************************The word was \"{chosen_word}\" - YOU LOOSE*****************************")
 
     print(display)
 
