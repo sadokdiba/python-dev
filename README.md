@@ -22,8 +22,9 @@ Each day's progress is stored in its respective folder (`day_XX`), where:
 │   └── README.md
 ├── ...
 └── README.md
+```
 
-## Commit Message Conventions
+### Commit Message Conventions
 
 This repository follows the **Conventional Commits** specification to maintain a consistent commit history. Below are the prefixes used and their purposes:
 
@@ -65,6 +66,7 @@ Example:
 ```text
 feat!: update authentication API to use OAuth 2.0
 BREAKING CHANGE: The `login` API endpoint has been removed. Use the `oauth/token` endpoint instead.
+```
 
 ### Branch Naming Conventions
 - `feat/<feature-name>`: New features
