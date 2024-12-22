@@ -1,4 +1,7 @@
 import random
+from hangman_words import word_list
+from hangman_art import stages, logo
+
 stages = [r'''
   +---+
   |   |
@@ -55,32 +58,29 @@ stages = [r'''
       |
 =========
 ''']
-word_list = ["aardvark", "baboon", "camel"]
-
-# TODO-1: - Create a variable called 'lives' to keep track of the number of lives left.
-
-#  Set 'lives' to equal 6.
 
 chosen_word = random.choice(word_list)
-print(chosen_word)
-
 placeholder = ""
 word_length = len(chosen_word)
+
 for position in range(word_length):
     placeholder += "_"
-print(placeholder)
 
 game_over = False
 correct_letters = []
-
 lives = 6
+
+print(logo) # prints the hangman logo
+
 while not game_over:
-    guess = input("Guess a letter: ").lower()
-    if lives == 1:
-        print(f"Wrong guess! - {lives - 1} lives left!\nYou loose.")
-        quit()
+    print(f"****************************{lives}/6 LIVES LEFT****************************")
+    guess = input("Guess a letter: \n\n").lower()
+
+    if guess in correct_letters:
+        print(f"You've already guessed the letter \"{guess}\" ")
 
     display = ""
+    
     for letter in chosen_word:
         if letter == guess:
             display += letter
@@ -92,17 +92,16 @@ while not game_over:
 
     if guess not in chosen_word:
         lives -= 1
-        print(f"Wrong guess - You have {lives} lives left")
+        print(f"You've guessed \"{guess}\", thats not in the word. You loose a life!")
+        if lives == 0:
+            game_over = True
+
+            print("***************************YOU LOOSE*****************************")
 
     print(display)
 
-    # TODO-2: - If guess is not a letter in the chosen_word, Then reduce 'lives' by 1.
-    #  If lives goes down to 0 then the game should stop and it should print "You lose."
-
     if "_" not in display:
         game_over = True
-        print("You win.")
+        print("***************************You win!!!!*****************************")
 
-    # TODO-3: - print the ASCII art from 'stages'
-    #  that corresponds to the current number of 'lives' the user has remaining.
-
+    print(stages[lives])
