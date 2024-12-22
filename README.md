@@ -23,3 +23,50 @@ Each day's progress is stored in its respective folder (`day_XX`), where:
 ├── ...
 └── README.md
 
+## Commit Message Conventions
+
+This repository follows the **Conventional Commits** specification to maintain a consistent commit history. Below are the prefixes used and their purposes:
+
+### Standard Commit Prefixes
+
+| **Prefix**   | **Description**                                                                                 | **Example**                                         |
+|--------------|-------------------------------------------------------------------------------------------------|---------------------------------------------------|
+| `feat:`      | Adds a new feature or functionality.                                                            | `feat: add user login feature`                    |
+| `fix:`       | Fixes a bug or issue in the code.                                                               | `fix: resolve null pointer exception`             |
+| `docs:`      | Updates or adds documentation (e.g., README, code comments).                                    | `docs: update API usage examples in README`       |
+| `style:`     | Changes that do not affect the code's functionality (e.g., formatting, whitespace).              | `style: reformat code according to style guide`   |
+| `refactor:`  | Refactors code without changing functionality or fixing bugs.                                   | `refactor: optimize authentication logic`         |
+| `test:`      | Adds or updates tests.                                                                          | `test: add unit tests for payment module`         |
+| `chore:`     | Updates build tools, dependencies, or other non-functional tasks.                               | `chore: update Node.js to latest LTS version`     |
+| `perf:`      | Improves performance (e.g., optimizing algorithms, reducing load times).                        | `perf: improve query performance for reports`     |
+| `ci:`        | Updates CI/CD configuration files or scripts.                                                   | `ci: add GitHub Actions for automated testing`    |
+| `build:`     | Changes build system or external dependencies.                                                  | `build: upgrade webpack to version 5`            |
+| `revert:`    | Reverts a previous commit.                                                                      | `revert: undo feat: add user login feature`       |
+
+---
+
+### Additional or Custom Prefixes
+
+| **Prefix**         | **Description**                                                                          | **Example**                                       |
+|---------------------|------------------------------------------------------------------------------------------|-------------------------------------------------|
+| `hotfix:`          | A critical fix that needs immediate deployment.                                         | `hotfix: resolve production crash in login`    |
+| `deps:`            | Updates dependencies specifically (similar to `build`).                                 | `deps: update lodash to 4.17.21`               |
+| `wip:`             | Work in progress (commits that are incomplete but pushed for collaboration).            | `wip: implement basic dashboard layout`        |
+| `security:`        | Security fixes or updates.                                                              | `security: fix XSS vulnerability in comments`  |
+| `localization:`    | Updates related to translations or internationalization.                                | `localization: update French translations`     |
+| `design:`          | Updates or changes related to UI/UX design.                                             | `design: adjust spacing in navbar`             |
+
+---
+
+### Breaking Changes
+If a commit introduces a **breaking change** (something that is not backward compatible), include a `!` after the prefix. Add details about the breaking change in the commit body.
+
+Example:
+```text
+feat!: update authentication API to use OAuth 2.0
+BREAKING CHANGE: The `login` API endpoint has been removed. Use the `oauth/token` endpoint instead.
+
+### Branch Naming Conventions
+- `feat/<feature-name>`: New features
+- `fix/<bug-name>`: Bug fixes
+- `chore/<task-name>`: Maintenance tasks
