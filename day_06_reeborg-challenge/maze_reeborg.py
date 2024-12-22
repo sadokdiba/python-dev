@@ -6,7 +6,6 @@ def turn_right():
     for _ in range(n):
         turn_left()
         
-
 while not at_goal():
     if right_is_clear:
         turn_right()
