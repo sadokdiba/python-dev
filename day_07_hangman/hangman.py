@@ -2,63 +2,6 @@ import random
 from hangman_words import word_list
 from hangman_art import stages, logo
 
-stages = [r'''
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========
-''', r'''
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========
-''', r'''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========
-''']
-
 chosen_word = random.choice(word_list)
 placeholder = ""
 word_length = len(chosen_word)
