@@ -6,17 +6,18 @@ Welcome to my **100 Days of Code** challenge repository! 🎉 This is my commitm
 
 ## 📂 Project Structure
 
-Each day's progress is stored in its respective folder (`day_XX`), where:
-- **`day_XX/`** contains the code and notes for that day's challenges and features.
+Each day's progress is stored in its respective folder (`day_XX_"project_description"`), where:
+- **`day_XX/`** contains the code and notes for that day's projects and features.
+- A **`"day"`** could span over several day depending on the difficulty as the idea is to code every single day.
 - Updates to previous days' code are also committed as I iterate and improve on earlier solutions or add new features.
   
 ### Example:
 ```plaintext
 .
-├── day_01/
+├── day_01_treasure_island/
 │   ├── main.py
 │   └── README.md
-├── day_02/
+├── day_02_hangman/
 │   ├── script.py
 │   ├── tests/
 │   └── README.md
