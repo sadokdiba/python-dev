@@ -1,3 +1,5 @@
+import time
+
 def main():  
     try:
         attempts = 2
@@ -21,23 +23,24 @@ def main():
        
 def process_number(number_entered):
     lower_range=1
-    upper_range = number_entered + 1 # the 1 is there just to make up for counting all the way to 100
+    upper_range = number_entered + 1 # the 1 is there just to make up for counting all the way to max chosen number
 
     for number in range(lower_range,upper_range):
 
         if number%3 == 0 and number%5 == 0:
             number = "FizzBuzz"
-            print(number)
+            print(f"\n{number}")
 
         elif number%3 == 0:
             number = "Fizz"
-            print(number)
+            print(f"\n{number}")
 
         elif number%5 == 0:
             number = "Buzz"
-            print(number)
+            print(f"\n{number}")
         else:
-            print(number)
+            print(f"\n{number}")
+        time.sleep(1)
     quit()
     
 if __name__ == "__main__":
