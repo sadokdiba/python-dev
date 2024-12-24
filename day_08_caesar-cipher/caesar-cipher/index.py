@@ -1,22 +1,79 @@
-alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+from artalpha import logo
+from artalpha import alphabet
 
-direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
-text = input("Type your message:\n").lower()
-shift = int(input("Type the shift number:\n"))
+print(logo)
 
-def encrypt(text,shift):
+def caesar(original_text, shift_amount, encode_or_decode):
+    output_text = ""
+    if encode_or_decode == "decode":
+        shift_amount *= -1
 
-    shifted_text = ""
+    for letter in original_text:
 
-    for letter in text:
-        if letter in alphabet:
-            original_index_letter = alphabet.index(letter)
-            new_index_letter = original_index_letter+shift
-            new_index_letter %= len(alphabet) #ensures that by whatever amount the user wants to shift, it stays within the length of the alphabet list
-            new_letter_after_shift = alphabet[new_index_letter]
-            shifted_text += new_letter_after_shift
+        if letter not in alphabet:
+            output_text += letter
         else:
-            shifted_text += letter
-    print(f"Here is the encoded result {shifted_text}")
+            shifted_position = alphabet.index(letter) + shift_amount
+            shifted_position %= len(alphabet)
+            output_text += alphabet[shifted_position]
+    print(f"Here is the {encode_or_decode}d result: {output_text}")
 
-encrypt(text,shift)
+def get_valid_direction():
+    attempts = 3
+    while attempts > 0:
+        direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
+        if direction in ('encode', 'decode'):
+            return direction
+        else:
+            attempts -= 1
+            print(f"Invalid input! You have {attempts} attempts left.")
+
+    print("Too many invalid attempts. Goodbye.")
+    quit()
+
+def get_valid_message():
+    attempts = 3
+    while attempts > 0:
+        message = input("Type your message (must not contain numbers):\n").strip().lower()
+        if message.isalpha() or len(message) <= 32 or " " in message:
+            return message
+        else:
+            attempts -= 1
+            print(
+                f"Invalid input! Message must be a string without numbers and no more than 32 characters. You have {attempts} attempts left.")
+
+    print("Too many invalid attempts. Goodbye.")
+    quit()
+
+def get_valid_shift():
+    attempts = 3
+    while attempts > 0:
+        try:
+            shift = int(input("Type the shift number:\n").strip())
+            return shift
+        except ValueError:
+            attempts -= 1
+            print(f"Invalid number! You have {attempts} attempts left.")
+
+    print("Too many invalid attempts. Goodbye.")
+    quit()
+
+should_continue = True
+
+while should_continue:
+    
+    direction = get_valid_direction()
+    text = get_valid_message()
+    shift = get_valid_shift()
+
+    caesar(original_text=text, shift_amount=shift, encode_or_decode=direction)
+
+    restart = input("Type 'yes' if you want to go again. Otherwise, type 'no'.\n").strip().lower()
+    if restart == "no":
+        should_continue = False
+        print("Goodbye")
+    elif restart == "yes":
+        continue
+    else:
+        should_continue = False
+        print("Invalid selection. Goodbye")
