@@ -1,3 +1,5 @@
+from loveart import loveimg
+
 def calculate_love_score(name1, name2):
     '''Calculate the love score based on the names provided.'''
     name_combined = name1 + name2
@@ -13,16 +15,22 @@ def calculate_love_score(name1, name2):
     for letter in name_combined.upper():
         if letter in love_letters:
             score2 += 1
-            
+
     # Combine the two scores into a single love score
     lovescore = str(score1)+str(score2)
     print(f"Your love score is {lovescore}")
 
 def main():
-    '''Prompt the user for their names and calculate their love score.'''
-    name1 = input("Enter your name: ").strip().upper()
-    name2 = input("Enter your lover's name: ").strip().upper()
-    calculate_love_score(name1, name2)
+    ''' Main function that prints LOVE and prompt the user for their names and calculate their love score.'''
+    print(loveimg)
+    try:    
+        name1 = input("Enter your name: ").strip().upper()
+        name2 = input("Enter your lover's name: ").strip().upper()
+        calculate_love_score(name1, name2)
+    except KeyboardInterrupt:
+        print("Keyboard cmd exit.")
+    except ValueError as e:
+        print(f"An error occured: {e}")
 
 if __name__ == "__main__":
     main()
