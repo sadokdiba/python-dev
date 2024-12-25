@@ -20,7 +20,6 @@ def main():
         print(f"An error occured: {e} - restart program and try again")
         quit()
 
-       
 def process_number(number_entered):
     lower_range=1
     upper_range = number_entered + 1 # the 1 is there just to make up for counting all the way to max chosen number
