@@ -1,4 +1,9 @@
 /manuals/
 .env
 /.idea/
+
+# ignore all .DS_Store files mac gererated files
 .DS_Store
+
+# ignore all pyc files
+**/__pycache__/
