@@ -28,8 +28,16 @@ print(f"Your password with for loop is: {final_password}")
 final_password = "".join(password_list)
 print(f"Your password with join is: {final_password}")
 
-random.shuffle(password_list)
+# You can only shuffle a list and the shuffle needs to happen without being assigned to a variable
 
+str_password = list(final_password)
+random.shuffle(str_password)
+final_restring = ""
+
+for v in (str_password):
+    final_restring+=v
+
+print(f"You final password shuffled :{final_restring}")
 
 
 
