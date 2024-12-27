@@ -1,8 +1,9 @@
 def is_leap_year(year):
-    ''' Check if year is leap'''
+    '''Check if year is leap'''
     if year % 4 == 0 and year % 20 == 0 and year % 400 == 0:
         return year == year
     return False
+
 attempts = 3
 while attempts > 0:
     try:
