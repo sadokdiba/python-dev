@@ -38,6 +38,38 @@ def compare(u_score, c_score):
     else:
         return "You lose 😤"
 
+def brain_of_game(us_cards, comp_cards, igo, comp_score, us_score):
+
+    while not igo:
+        try:
+            us_score = calculate_score(us_cards)
+            comp_score = calculate_score(comp_cards)
+            print(f"Your cards: {us_cards}, current score: {us_score}")
+            print(f"Computer's first card: {comp_cards[0]}")
+
+            if us_score == 0 or comp_score == 0 or us_score > 21:
+                igo = True
+            else:
+                user_should_deal = input("Type 'y' to get another card, type 'n' to pass: ")
+                if user_should_deal == "y":
+                    us_cards.append(deal_card())
+                else:
+                    igo = True
+
+        except KeyboardInterrupt:
+            print("Program ended with Keyborad Shortcut")
+            quit()
+        except ValueError as e:
+            print(f"An error occurred: {e}")
+            quit()
+
+    while comp_score != 0 and comp_score < 17:
+        comp_cards.append(deal_card())
+        comp_score = calculate_score(comp_cards)
+
+    print(f"Your final hand: {us_cards}, final score: {us_score}")
+    print(f"Computer's final hand: {comp_cards}, final score: {comp_score}")
+    print(compare(us_score, comp_score))
 
 def play_game():
     print(logo)
@@ -50,33 +82,29 @@ def play_game():
     for _ in range(2):
         user_cards.append(deal_card())
         computer_cards.append(deal_card())
+    
+    brain_of_game(comp_score=computer_score, us_score=user_score, igo=is_game_over , us_cards=user_cards, comp_cards=computer_cards)
 
-    while not is_game_over:
-        user_score = calculate_score(user_cards)
-        computer_score = calculate_score(computer_cards)
-        print(f"Your cards: {user_cards}, current score: {user_score}")
-        print(f"Computer's first card: {computer_cards[0]}")
-
-        if user_score == 0 or computer_score == 0 or user_score > 21:
-            is_game_over = True
-        else:
-            user_should_deal = input("Type 'y' to get another card, type 'n' to pass: ")
-            if user_should_deal == "y":
-                user_cards.append(deal_card())
+    continue_playing = True
+    while continue_playing:
+        
+        try:
+            continue_playing_response = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ") 
+            if continue_playing_response == "y":
+                print("\n" * 20)
+                play_game()
             else:
-                is_game_over = True
+                continue_playing = False
 
-    while computer_score != 0 and computer_score < 17:
-        computer_cards.append(deal_card())
-        computer_score = calculate_score(computer_cards)
+        except KeyboardInterrupt:
+            print("Program ended with Keyborad Shortcut")
+            quit()
+        except ValueError as e:
+            print(f"An error occurred: {e}")
+            quit()
 
-    print(f"Your final hand: {user_cards}, final score: {user_score}")
-    print(f"Computer's final hand: {computer_cards}, final score: {computer_score}")
-    print(compare(user_score, computer_score))
-
-
-    while input("Do you want to play a game of Blackjack? Type 'y' or 'n': ") == "y":
-        print("\n" * 20)
+    print("Thanks for playing - Good Bye")
+    quit()
 
 if __name__ == "__main__":
     play_game()
