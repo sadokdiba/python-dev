@@ -1,0 +1,7 @@
+- reproduce bug
+- play computer and evaluate each line
+- fixing errors and watching for red underlines
+- squash bugs with print() statement
+- bringing out the BIG gun: using a debugger
+
+- get on stackoverflow and answer questions - https://stackoverflow.com/questions/tagged/python
