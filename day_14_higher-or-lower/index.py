@@ -68,64 +68,36 @@ def main():
     '''Main game loop'''
     score = 0
     is_true = True
-    second_equal_first = True
 
     choice_a = random.choice(data)
     choice_b = random.choice(data)
 
-    while second_equal_first:
-        if choice_a == choice_b:
-            choice_b = random.choice(data)
-        else:
-            second_equal_first = False
-            
-    previous_a = choice_a
-    previous_b = choice_b
-
+    # Ensure choice_a and choice_b are not equal initially
+    while choice_a == choice_b:
+        choice_b = random.choice(data)
+      
+    previous_a, previous_b = choice_a, choice_b
     print_comparison(choice_a, choice_b)
 
     while is_true:
-        
         is_true, score = capture_input(score, choice_a, choice_b)
-        if is_true == False:
+        if not is_true:
             break
-        
-        # Determine the next round's A and B based on the previous results
-        # Intending to always make A the entity with the highest follower_count of the previous round.
 
+        # Set the higher follower count entity as 'A' for the next round
         if choice_a['follower_count'] > choice_b['follower_count']:
-            # Keep the previous 'A' as 'A' if A was higher
-            second_equal_first = True
-            choice_a = previous_a
-            choice_b = random.choice(data)
-
-            #Ensures that B is always different from A
-            while second_equal_first:
-                if choice_a == choice_b:
-                    choice_b = random.choice(data)
-                else:
-                    second_equal_first = False
+            choice_a, choice_b = previous_a, random.choice(data)
         else:       
-            # Changes 'A' to 'B' of the previous round if B was higher
-            second_equal_first = True
-            choice_a = previous_b
+            choice_a, choice_b = previous_b, random.choice(data)
+
+        # Ensure choice_b is different from choice_a
+        while choice_a == choice_b:
             choice_b = random.choice(data)
-
-            #Ensures that B is always different from A
-            while second_equal_first:
-                if choice_a == choice_b:
-                    choice_b = random.choice(data)
-                else:
-                    second_equal_first = False
-
-        # Update 'previous_a' and 'previous_b' for the next round
-        previous_a = choice_a
-        previous_b = choice_b
-
-        # Print the comparison for the next round
+   
+        previous_a, previous_b = choice_a, choice_b
         print_comparison(choice_a, choice_b)
 
-    print(f"Your final score is {score}")
+    print(f"Your final score is {score}.")
 
 if __name__ == "__main__":
     main()
