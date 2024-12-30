@@ -6,7 +6,6 @@ CLEAR_SCREEN = "\n" * 50
 INVALID_INPUT_MESSAGE = "Invalid choice. Please type 'A' or 'B'."
 GAME_OVER_MESSAGE = "Too many invalid attempts. Restart the game to try again."
 CONTINUE_MESSAGE = "Not quite! They each have equal followers."
-
 print(art.logo)
 
 def clear_screen():
@@ -14,16 +13,16 @@ def clear_screen():
 
 def format_data(account):
     """Format the account data into printable format."""
-    account_name = account ["name"]
-    account_descr = account["description"]
-    account_country = account ["country"]
-    return f"{account_name}, a {account_descr}, from {account_country}"
+    acc_name = account["name"]
+    acc_des = account["description"]
+    acc_cntry = account["country"]
+    return f"{acc_name}, a {acc_des}, from {acc_cntry}"
 
 def print_comparison(choice_a, choice_b):
     """Print the comparison between two options."""
-    print(f"Compare A: {format_data(choice_a)} - Pssst {choice_a['follower_count']}\n")
+    print(f"Compare A: {format_data(choice_a)}.\n")
     print(art.vs)
-    print(f"Compare B: {format_data(choice_b)} - Pssst {choice_b['follower_count']}\n")
+    print(f"Compare B: {format_data(choice_b)}.\n")
 
 def determine_answer(score, user_choice, choice_a, choice_b):
     """Print the comparison between two options."""
@@ -41,7 +40,6 @@ def determine_answer(score, user_choice, choice_a, choice_b):
         clear_screen()
         print(f"{CONTINUE_MESSAGE} - {choice_a['follower_count']} and {choice_b['follower_count']}\nYour current score is still {score}\n - You can continue")
         is_true = True
-
     return is_true, score
 
 def capture_input(score, choice_a, choice_b):
@@ -57,7 +55,6 @@ def capture_input(score, choice_a, choice_b):
             else:
                 attempts -= 1
                 print(f"{INVALID_INPUT_MESSAGE} {attempts} attempt(s) left")
-                
         print(GAME_OVER_MESSAGE)
         quit()
     except KeyboardInterrupt:
@@ -68,35 +65,24 @@ def main():
     '''Main game loop'''
     score = 0
     is_true = True
-
     choice_a = random.choice(data)
     choice_b = random.choice(data)
-
-    # Ensure choice_a and choice_b are not equal initially
     while choice_a == choice_b:
         choice_b = random.choice(data)
-      
     previous_a, previous_b = choice_a, choice_b
     print_comparison(choice_a, choice_b)
-
     while is_true:
         is_true, score = capture_input(score, choice_a, choice_b)
         if not is_true:
             break
-
-        # Set the higher follower count entity as 'A' for the next round
         if choice_a['follower_count'] > choice_b['follower_count']:
             choice_a, choice_b = previous_a, random.choice(data)
         else:       
             choice_a, choice_b = previous_b, random.choice(data)
-
-        # Ensure choice_b is different from choice_a
         while choice_a == choice_b:
             choice_b = random.choice(data)
-   
         previous_a, previous_b = choice_a, choice_b
         print_comparison(choice_a, choice_b)
-
     print(f"Your final score is {score}.")
 
 if __name__ == "__main__":
