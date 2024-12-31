@@ -7,3 +7,15 @@
 
 # ignore all pyc files
 **/__pycache__/
+
+# Exclude Python virtual environment directories
+venv/
+.venv/
+env/
+ENV/
+
+# (Optional) If you have nested venv directories:
+**/venv/
+**/.venv/
+**/env/
+**/ENV/
