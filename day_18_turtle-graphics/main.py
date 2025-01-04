@@ -9,9 +9,9 @@ sad_tot = Turtle()
 def draw_dashed_line():
     for _ in range(25):
         sad_tot.forward(10)
-        sad_tot.color("white")
+        sad_tot.penup
         sad_tot.forward(10)
-        sad_tot.color("black")
+        sad_tot.pendown()
 
 draw_dashed_line()
 
