@@ -14,13 +14,12 @@ def draw_ten_dots():
         tim.forward(50)
         tim.pendown()
 def main():
-    x = -250
-    y = -250
+    x = -250, y = -250
     for _ in range(10):
         tim.penup()
         tim.setposition(x, y)
         draw_ten_dots()
-        y += 40
+        y += 45
 
 main()
 
