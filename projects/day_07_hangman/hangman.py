@@ -37,7 +37,7 @@ while not game_over:
             display+=guess
             correct_letters.append(letter)
         elif letter in correct_letters:
-            display+=guess
+            display+=letter
         else:
             display+="_"
 
