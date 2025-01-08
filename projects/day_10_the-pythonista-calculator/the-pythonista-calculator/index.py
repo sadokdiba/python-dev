@@ -41,8 +41,17 @@ def operating_cell(n1,n2,op):
         return ValueError
     
 def pick_operation():
-    pick_an_operation = input("Pick an operation: ")
-    return pick_an_operation
+    attempts = 3
+    while attempts > 0:
+        print_operations()
+        pick_an_operation = input("Pick an operation: ")
+        if pick_an_operation not in operations_dict:
+            print("Invalid operation selected")
+            attempts -= 1
+        else:
+            return pick_an_operation
+    print("too many invalid attempts")
+    quit()
 
 def next_number():
     second_number = float(input("Whats the next number?: "))
@@ -51,27 +60,18 @@ def next_number():
 def continue_calculating(result):
     is_continue = True
     while is_continue:
-        try:
-            continue_value = input(f"Type 'y' to continue calculating with {result:.9f}, Type 'n' to start a new calculation or type any key to exit ")
-            if continue_value == 'y':
-                clear_screen()
-                print_operations()
-                next_operation = pick_operation()
-                next_value = next_number()
-                new_result = operating_cell(n1=result,n2=next_value,op=next_operation)
-                result = new_result
-            elif continue_value == 'n':
-                clear_screen()
-                is_continue = False
-            else:
-                return False
-        except TypeError as e:
-            print(f"An error occured: {e}")
-        except ValueError as e:
-            print(f"An error occured: {e}")
-        except KeyboardInterrupt:
-            print("Keyboard exit!")
-            quit()
+        continue_value = input(f"Type 'y' to continue calculating with {result}, Type 'n' to start a new calculation or type any key to exit ")
+        if continue_value == 'y':
+            clear_screen()
+            next_operation = pick_operation()
+            next_value = next_number()
+            new_result = operating_cell(n1=result,n2=next_value,op=next_operation)
+            result = new_result
+        elif continue_value == 'n':
+            clear_screen()
+            is_continue = False
+        else:
+            return False
     return True
 
 def main():
@@ -79,11 +79,10 @@ def main():
     while is_calculating:
         try:
             first_number = float(input("What's the first number?: "))
-            print_operations()
             operation = pick_operation()
             second_number = next_number()
             final_answer = operating_cell(n1=first_number,n2=second_number,op=operation)
-            print(f"{first_number:.2f} {operation} {second_number:.2f} = {final_answer:.9f}")
+            print(f"{first_number:.2f} {operation} {second_number:.2f} = {final_answer}")
             is_calculating = continue_calculating(result=final_answer)
         except TypeError as e:
             print(f"An error occured {e}")
