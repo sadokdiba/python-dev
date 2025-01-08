@@ -32,7 +32,7 @@ def create_turtles(colors, start_x=-470, start_y=-95, y_step=45, shape_size=1.7)
         racer.shapesize(shape_size)
         racer.color(color)
         racer.goto(start_x, start_y)
-        start_y += y_step  # Move the next turtle down
+        start_y += y_step
         turtles.append(racer)
     return turtles
 
@@ -47,7 +47,6 @@ def start_race(turtles, user_bet, finish_line_x=470):
             turtle.speed("fast")
             turtle.forward(random.randint(0, 10))
             
-            # Check if this turtle crossed the finish line
             if turtle.xcor() > finish_line_x:
                 race_is_on = False
                 winner = turtle.pencolor()
@@ -55,26 +54,16 @@ def start_race(turtles, user_bet, finish_line_x=470):
                     print(f"You've won! The winner is the {winner} turtle.")
                 else:
                     print(f"You've lost. The winner is the {winner} turtle.")
-                break  # Stop checking once we have a winner
+                break
 
 def main():
-    # Basic configuration
     colors = ["red", "orange", "brown", "green", "blue", "purple"]
     screen = setup_screen()
-    
-    # Get user's bet
     user_bet = get_user_bet(screen)
-    
-    # Create the turtle racers
     all_turtles = create_turtles(colors)
-    
-    # Start the race
-    if user_bet:  # Only start if the user entered something
+    if user_bet: 
         start_race(all_turtles, user_bet)
-    
-    # Wait for the user to close the window
     screen.exitonclick()
 
-# Entry point
 if __name__ == '__main__':
     main()
