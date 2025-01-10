@@ -2,11 +2,17 @@ import time
 
 print("This is a calculator to help you calculate your BMI")
 time.sleep(1)
-try:
-    weight = float(input("Please enter your weight in kilograms \n"))
-    height = float(input("Please enter your height in in meters eg. 1.75m \n"))
-except:
-    print("Enter a valid number")
+attempts = 3
+while attempts > 0:
+    try:
+        weight = float(input("Please enter your weight in kilograms \n"))
+        height = float(input("Please enter your height in in meters eg. 1.75m \n"))
+        break
+    except ValueError as e:
+        print(f"An error occurred: {e}")
+        attempts -=1
+if attempts == 0:
+    print("Too many invalid attempts, try again")
     quit()
 bmi_calculation = weight/height**2
 
