@@ -29,8 +29,6 @@ while gameis_on:
     
     for seg in snake.snakes[1:]:
         if snake.head.position() == seg.position():
-            print(snake.head.pos())
-            print(seg.position())
             score.head_hit_body_display()
             gameis_on = False
 
