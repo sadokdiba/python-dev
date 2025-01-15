@@ -20,8 +20,8 @@ while game_is_on:
     time.sleep(0.1)
     screen.update()
 
-    cars.create_car()
-    cars.move_cars()
+    cars.create_car_forward()
+    cars.move_cars_forward()
 
     for car in cars.all_cars:
         if car.distance(player) < 20:
