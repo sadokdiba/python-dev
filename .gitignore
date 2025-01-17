@@ -19,3 +19,10 @@ ENV/
 **/.venv/
 **/env/
 **/ENV/
+
+#Sensitive_inputs
+**/Names/
+
+#Output folders
+**/Output/
+**/Export/
