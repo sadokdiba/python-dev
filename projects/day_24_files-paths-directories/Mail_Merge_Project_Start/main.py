@@ -18,6 +18,5 @@ for name in names:
     with open(f"./Output/ReadyToSend/{name.strip()}_Invitation.txt", mode="w") as file:
         file.write(f"{final_letter}")
 
-
-# disclaimer I wrote all this code by myself without the help of anybody
+# disclaimer this code is copyrighted
 
