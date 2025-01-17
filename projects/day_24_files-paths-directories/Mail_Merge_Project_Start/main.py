@@ -10,11 +10,11 @@
 with open("./Input/Names/invited_names.txt", "r") as file_with_names:
     names = file_with_names.readlines()
 
+with open("./Input/Letters/starting_letter.txt") as starting_letter:
+    whole_letter = starting_letter.read()
+
 for name in names:
-    with open("./Input/Letters/starting_letter.txt") as starting_letter:
-        whole_letter = starting_letter.read()
-        final_letter = whole_letter.replace("[name]", name.strip())
-    
+    final_letter = whole_letter.replace("[name]", name.strip())
     with open(f"./Output/ReadyToSend/{name.strip()}_Invitation.txt", mode="w") as file:
         file.write(f"{final_letter}")
 
