@@ -18,5 +18,7 @@ for name in names:
     with open(f"./Output/ReadyToSend/{name.strip()}_Invitation.txt", mode="w") as file:
         file.write(f"{final_letter}")
 
+print("file has run")
+
 # disclaimer this code is copyrighted
 
