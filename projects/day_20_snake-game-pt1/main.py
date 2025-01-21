@@ -9,7 +9,9 @@ screen.tracer(0)
 
 snake = Snake()
 
-game_is_on = Truescreen.title("Snake Game")
+game_is_on = True
+
+screen.title("Snake Game")
 
 while game_is_on:
     screen.update()
