@@ -22,7 +22,7 @@ class Ball(Turtle):
     def bounce_x(self):
         """Reverse the horizontal direction of the ball's movement."""
         self.x_move *= -1
-        self.move_speed *= 0.9
+        # self.move_speed *= 0.9
     
     def reset_position(self):
         self.goto(0, 0)
