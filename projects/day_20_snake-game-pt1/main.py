@@ -5,12 +5,12 @@ import time
 screen = Screen()
 screen.setup(width=1200, height=1200)
 screen.bgcolor("black")
-screen.title("Snake Game")
 screen.tracer(0)
 
 snake = Snake()
 
-game_is_on = True
+game_is_on = Truescreen.title("Snake Game")
+
 while game_is_on:
     screen.update()
     time.sleep(.1)
