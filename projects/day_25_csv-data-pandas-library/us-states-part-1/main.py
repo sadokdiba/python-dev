@@ -13,10 +13,8 @@ read_states = pandas.read_csv("./50_states.csv")
 all_states = pandas.DataFrame(read_states)
 print(read_states)
 
+# while game_on:
 
-
-while game_on:
-
-    entered_state = screen.textinput(title=f"{len(correct_states)}/50", prompt="Enter the state name")
+#     entered_state = screen.textinput(title=f"{len(correct_states)}/50", prompt="Enter the state name")
 
 screen.exitonclick()
