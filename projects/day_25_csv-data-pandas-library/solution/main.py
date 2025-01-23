@@ -1,5 +1,7 @@
 import turtle
 import pandas
+import requests
+import json
 
 screen = turtle.Screen()
 screen.title("U.S. States Game")
