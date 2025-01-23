@@ -34,24 +34,36 @@ def main():
 
     """Main function to run the number guessing game."""
     
-    range_of_game = 100  # Upper limit for the range
-    num_to_guess = random.randint(1, range_of_game)  # Includes both 1 and 100
+    levels = {
+        "hard": {"range": 100,
+                 "attempts": 10,
+                 },
+        "medium": {"range": 50,
+                 "attempts": 7,
+                 },
+        "easy": {"range": 20,
+                 "attempts": 5,
+                 },
+    }
 
     print(art.logo)
     print("Welcome to the Number Guessing Game!")
-    print(f"I'm thinking of a number between 1 and {range_of_game}.")
 
     try:
         for _ in range(3):  # Allow 3 attempts to choose the difficulty.
-            level_chosen_by_user = input("Choose a difficulty. Type 'easy' or 'hard': ").strip().lower()
-            if level_chosen_by_user == "easy":
-                play_game(num_to_guess, range_of_game, attempts=10)
+            level_chosen = input("enter the level you would like to play easy/medium/hard: \n").strip().lower()
+            if level_chosen in levels:
+                range_of_game = levels[level_chosen]["range"]
+                num_to_guess = random.randint(1, range_of_game)
+
+                print(f"I'm thinking of a number between 1 and {range_of_game}.")
+
+                play_game(num_to_guess, range_of_game, attempts=levels[level_chosen]["attempts"])
                 return
-            elif level_chosen_by_user == "hard":
-                play_game(num_to_guess, range_of_game, attempts=5)
-                return
+
             else:
-                print("Invalid choice. Please type 'easy' or 'hard'.\n")
+                print("Invalid choice. Please type 'easy' , 'medium' or 'hard'.\n")
+
     except KeyboardInterrupt:
         print("\nYou have ended the program. Goodbye!")
         quit()
