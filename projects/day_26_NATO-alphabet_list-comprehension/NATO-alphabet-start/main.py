@@ -28,11 +28,10 @@ my_dict = { row['letter']:row['code'] for _,row in df.iterrows()}
 # print(my_dict)
 
 #TODO 2. Create a list of the phonetic code words from a word that the user inputs.
-entered_word = input("enter a word: \n")
+entered_word = input("enter a word: \n").upper()
 
-nato_word = []
-for letter in entered_word:
-    nato_word.append(my_dict[letter.upper()])
+nato_word = [my_dict[letter] for letter in entered_word]
+
 print(nato_word)
 
 
