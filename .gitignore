@@ -8,6 +8,10 @@
 # ignore all pyc files
 **/__pycache__/
 
+# ignore all txt or csv files
+*.txt
+*.csv
+
 # Exclude Python virtual environment directories
 venv/
 .venv/
