@@ -50,7 +50,7 @@ def brain_of_game(us_cards, comp_cards, igo, comp_score, us_score):
             if us_score == 0 or comp_score == 0 or us_score > 21:
                 igo = True
             else:
-                user_should_deal = input("Type 'y' to get another card, type 'n' to pass: ")
+                user_should_deal = input("Type 'y' to get another card, type 'n' to pass: ").strip().lower()
                 if user_should_deal == "y":
                     us_cards.append(deal_card())
                 else:
@@ -83,13 +83,13 @@ def play_game():
         user_cards.append(deal_card())
         computer_cards.append(deal_card())
     
-    brain_of_game(comp_score=computer_score, us_score=user_score, igo=is_game_over , us_cards=user_cards, comp_cards=computer_cards)
+    brain_of_game(comp_score=computer_score, us_score=user_score, igo=is_game_over, us_cards=user_cards, comp_cards=computer_cards)
 
     continue_playing = True
     while continue_playing:
         
         try:
-            continue_playing_response = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ") 
+            continue_playing_response = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ").strip().lower()
             if continue_playing_response == "y":
                 print("\n" * 20)
                 play_game()
