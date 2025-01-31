@@ -45,4 +45,7 @@ student_dataframe = pd.DataFrame(student_dict)
 print(student_dataframe)
 
 for (index, row) in student_dataframe.iterrows():
-    print(row.score)
+    print(row)
+
+df = pd.read_csv("./unilever_users_with_workspaces.csv")
+
