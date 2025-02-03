@@ -33,3 +33,4 @@ target = 89
 
 searcher = binarySearch()
 print(searcher.search(nums, target)) 
+
