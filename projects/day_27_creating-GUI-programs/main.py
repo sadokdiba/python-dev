@@ -6,7 +6,7 @@ window.minsize(width=600, height=500)
 
 #Labels
 label = Label()
-label.config(text="Click the below button to perform some action.", font=("Arial", 24, "bold"))
+label.config(text="This is a python program.", font=("Arial", 24, "bold"))
 label.pack()
 
 #Buttons
