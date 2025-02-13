@@ -75,6 +75,15 @@ def process_drink(drink_name, menu, resources, money_received):
         money_received.append(cost)
         print(f"Here is your {drink_name} ☕️. Enjoy!")
 
+def refill_resources(resources):
+    """
+    Refill the machine's resources.
+    """
+    resources['water'] += int(input("How much water to add? (ml): "))
+    resources['milk'] += int(input("How much milk to add? (ml): "))
+    resources['coffee'] += int(input("How much coffee to add? (g): "))
+    print("Resources refilled successfully!")
+
 def main():
     machine_on = True
     invalid_inputs_remaining = 3
@@ -83,9 +92,11 @@ def main():
 
     while machine_on and invalid_inputs_remaining > 0:
         try:
-            user_choice = input("What would you like? (espresso/latte/cappuccino): ").strip().lower()
+            user_choice = input("What would you like? (espresso/latte/cappuccino/report/refill/off): ").strip().lower()
             if user_choice == 'report':
                 print(print_report(current_resources, money_received))
+            elif user_choice == 'refill':
+                refill_resources(current_resources)
             elif user_choice == 'off':
                 machine_on = False
             elif user_choice in MENU:
