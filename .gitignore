@@ -26,7 +26,7 @@ ENV/
 
 #Sensitive_inputs
 **/Names/
-**/sounds/
+# **/sounds/
 
 #Output folders
 **/Output/

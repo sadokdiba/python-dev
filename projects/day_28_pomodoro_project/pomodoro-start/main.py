@@ -86,7 +86,7 @@ def play_sound(sound_file):
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
-window.title("GUI Pomodoro")
+window.title("Productivity Countdown Timer")
 window.config(padx=100, pady=50, bg=YELLOW)
 
 canvas = Canvas(width=200, height=224, bg=YELLOW, highlightthickness=0)
