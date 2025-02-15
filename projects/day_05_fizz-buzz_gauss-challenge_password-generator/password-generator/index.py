@@ -19,7 +19,7 @@ for char in range(password_length):
     else:
         password_list.append(random.choice(symbols))
 
-print(f"Unshuffled password list {password_list}")
+print(f"Unruffled password list {password_list}")
 random.shuffle(password_list)
 print(f"Shuffled password list {password_list}")
 
