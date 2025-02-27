@@ -8,17 +8,19 @@ password_length = int(input("How long would you like your password to be?\n"))
 
 char_type = ['letter', 'number', 'symbols']
 
-password_list = []
+def generate_password():
+    password_list = []
+    for char in range(password_length):
+        random_char_type = random.choice(char_type)
+        if random_char_type == 'letter':
+            password_list.append(random.choice(letters))
+        elif random_char_type == 'number':
+            password_list.append(random.choice(numbers))
+        else:
+            password_list.append(random.choice(symbols))
+    return password_list
 
-for char in range(password_length):
-    random_char_type = random.choice(char_type)
-    if random_char_type == 'letter':
-        password_list.append(random.choice(letters))
-    elif random_char_type == 'number':
-        password_list.append(random.choice(numbers))
-    else:
-        password_list.append(random.choice(symbols))
-
+password_list = generate_password()
 print(f"Unruffled password list {password_list}")
 random.shuffle(password_list)
 print(f"Shuffled password list {password_list}")
