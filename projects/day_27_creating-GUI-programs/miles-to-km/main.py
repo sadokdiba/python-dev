@@ -24,7 +24,7 @@ kilometers.grid(column=2, row=1, padx=10, pady=10)
 def calculate():
     miles = float(miles_entry.get())
     km = miles * 1.60934
-    result.config(text=f"{km: .2f}")
+    result.config(text=f"{km: .3f}")
 
 button = Button(text="Calculate", command=calculate)
 button.grid(column=1, row=2, padx=10, pady=10)
